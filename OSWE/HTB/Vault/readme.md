@@ -162,7 +162,7 @@ ncat 192.168.5.2 987 -p 4444
 SSH-2.0-OpenSSH_7.2p2 Ubuntu-4ubuntu2.4
 ```
 - Uses ncat to hit ip:port using 4444 as the source port (Like we did with nmap)
-
+- Creates a connection to 192.168.5.2:987 using the source port 4444. The connection can then be hit via port 3333
 ```bash
 /usr/bin/ncat -l 3333 --sh-exec 'ncat 192.168.5.2 987 -p 4444'
 ```

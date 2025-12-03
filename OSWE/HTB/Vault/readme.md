@@ -131,27 +131,11 @@ root@DNS:/home/alex# cat .bash_history
 ```
 
 ```bash
-dave@ubuntu:~$ ssh dave@192.168.122.4
-dave@192.168.122.4's password: 
-Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.4.0-116-generic i686)
-
- * Documentation:  https://help.ubuntu.com
- * Management:     https://landscape.canonical.com
- * Support:        https://ubuntu.com/advantage
-
-98 packages can be updated.
-50 updates are security updates.
-
-
-Last login: Mon Sep  3 16:38:03 2018
+dave@DNS:/# time for i in $(seq 1 65535); do (nc -zvn 192.168.5.2 ${i} 2>&1 | grep -Ev "Connection (refused|timed)" &); done
 ```
 
 ```bash
-time for i in $(seq 1 65535); do (nc -zvn 192.168.5.2 ${i} 2>&1 | grep -v "Connection refused" &); done
-```
-
-```bash
-grep -rHa '192.168.5.2' /var/log
+dave@DNS:/# grep -rHa '192.168.5.2' /var/log
 
 # Output
 # /var/log/auth.log:Jul 24 15:07:21 DNS sshd[1536]: Accepted password for dave from 192.168.5.2 port 4444 ssh2

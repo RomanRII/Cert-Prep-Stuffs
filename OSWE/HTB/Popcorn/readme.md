@@ -1,4 +1,4 @@
-# Popcorn
+# Popcorn (User/Root Compromise)
 - Target IP: 10.129.24.130
 
 # Recon

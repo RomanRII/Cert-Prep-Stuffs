@@ -94,3 +94,4 @@ Content-Type: image/gif
 ```
 - PHP Info can now be seen via `/torrent/upload/723bc28f9b6f924cca68ccdff96b6190566ca6b4.php`
 
+- Weaponized payload uploaded to OSWE/HTB/Popcorn/Payloads/weaponized.php

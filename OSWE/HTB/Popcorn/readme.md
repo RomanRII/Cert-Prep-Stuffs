@@ -19,9 +19,7 @@ nmap -iL scope.txt -p80 -sCV -oA Nmap/sCV-80 --open -Pn
 ```
 
 ```bash
-gobuster dir \ 
--w /usr/share/wordlists/seclists/Discovery/Web-Content/combined_directories.txt \ 
---url http://popcorn.htb/
+gobuster dir -w /usr/share/wordlists/seclists/Discovery/Web-Content/combined_directories.txt --url http://popcorn.htb/
 
 # Output
 # /test -> phpinfo()
